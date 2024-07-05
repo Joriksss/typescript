@@ -1,0 +1,470 @@
+class Temp{
+    private x: number
+    constructor(val?: number){
+        val ? this.x = val : this.x = 0
+    }
+
+    private get getX(){
+        return this.x
+    }
+
+    public set setX(val:number){
+        this.x =val
+    }
+}
+let temp1: Temp = new Temp()
+let temp2: Temp = new Temp(20)
+
+temp1.setX = 50
+console.log(temp2.getX)
+console.log(temp1.getX)
+
+
+class Point{
+    static cnt:number = 0;
+    x:number
+    y:number;
+
+    public static getCounter():number{
+        let x = 5
+        return x;
+    }
+
+    constructor(){
+        this.x = 0;
+        this.y = 0;
+        Point.cnt++;
+    }
+}
+
+let lol:Point = new Point()
+
+console.log(Point.cnt)
+
+
+class ShopItem{
+    static id: number = 0;
+    nameproduct: string;
+    gabarity:number;
+    ves:number;
+    price:number;
+
+    constructor(){
+        this.gabarity = 0;
+        this.ves = 0;
+        this.price = 0;
+        ShopItem.id++;
+    }
+}
+
+let info:ShopItem = new ShopItem()
+
+console.log(ShopItem.id)
+
+
+class React{
+    static x1:number;
+    static y1:number;
+    static x2:number;
+    static y2:number;
+
+    static width:number = 0;
+    static heigth:number = 0;
+
+    public static widthMinus():number{
+        React.width = React.x1 - React.x2
+        return React.width
+    }
+    public static heigthMinus():number{
+        React.heigth = React.y1 = React.y2
+        return React.heigth
+    }
+}
+
+
+class User{
+    static count:number;
+    public username:string;
+    readonly login:string;
+    set log(login:string){
+        console.log("Невозможно изменить логин!")
+    }
+    private password:string;
+    private get pass(){
+        return "*****"
+    }
+    private grade:number;
+    set grd(grade:number){
+        console.log("Неизвестное свойство!")
+    }
+    get grad(){
+        return "Неизвестное свойство!"
+    }
+    show_info(rect:User){ 
+        console.log(rect.username, rect.login)
+    }
+
+    eq(other:User): boolean { 
+        return this.grade === other.grade; 
+    } 
+
+    lt(other: User): boolean { 
+        return this.grade < other.grade; 
+    } 
+ 
+    gt(other: User): boolean { 
+        return this.grade > other.grade; 
+    } 
+
+    constructor(_username:string, _login:string, _password:string, _grade:number){
+        this.username = _username;
+        this.login = _login;
+        this.password = _password;
+        this.grade = _grade;
+        User.count ++
+    }
+}
+
+class SuperUser extends User{
+    role:string;
+    set rol(role:string){
+        console.log("Неизвестное свойство!")
+    }
+    get roll(){
+        return "Неизвестное свойство!"
+    }
+    show_info(rect:SuperUser){ 
+        console.log(rect.username, rect.login, rect.role)
+    }
+    constructor(_username:string, _login:string, _password:string, _role:string, _grade:number){
+        super(_username, _login, _password, _grade,)
+        User.count++
+    }
+}
+
+const user1 = new User('Paul McCartney', 'paul', '1234', 3)
+const user2 = new User('George Harrison', 'george', '5678', 2)
+const user3 = new User('Richard Starkey', 'ringo', '8523', 3)
+const admin = new SuperUser('John Lennon', 'john', '0000', 'admin', 5)
+
+// user1.show_info(new User('Paul McCartney', 'paul', '1234', 3))
+// admin.show_info(new SuperUser('John Lennon', 'john', '0000', 'admin', 5))
+
+User.count
+SuperUser.count
+
+console.log(`Всего обычных пользователей: ${User.count}`)
+console.log(`Всего супер-пользователей: ${SuperUser.count}`)
+
+// console.log( user1.lt(user2) )
+// console.log( admin.gt(user3) )
+// console.log( user1.eq(user3) )
+
+user3.username = 'Ringo Star'
+user1.password = 'Pa$$w0rd'
+
+console.log(user3.username)
+console.log(user2.password)
+console.log(user2.login)
+
+user2.login = 'geo'
+
+console.log(user3.grade)
+admin.grade = 10
+
+
+
+
+abstract class Car{
+    model:string;
+
+    abstract go(): void;
+    abstract stop(): void;
+    abstract start(): void;
+}
+
+class Af extends Car{
+    go(){}
+    stop(){}
+    start(){}
+}
+
+let gfg: Af = new Af()
+
+
+abstract class Geometry{
+    width:string;
+    color:string;
+    
+    abstract draw(): void
+}
+
+class Line extends Geometry{
+    x1:number;
+
+    draw(){}
+}
+
+class React extends Geometry{
+    x1:number;
+    x2:number;
+    y1:number;
+    y2:number;
+    
+    draw(){}
+}
+
+class Ellipse extends Geometry{
+    x1:number;
+    x2:number;
+    y1:number;
+
+    draw(){}
+}
+
+const shapes: Geometry[] = []
+
+shapes[0] = new Line()
+shapes[1] = new React()
+shapes[2] = new Ellipse()
+
+
+abstract class Recipes{
+    names:string;
+    types: 'vegan' | 'typical';
+
+    abstract showIngredients(): void;
+    abstract showRecipe(): void;
+}
+
+class Salad extends Recipes{
+    ingridients:string;
+    recipes:string
+
+    showIngredients(){}
+    showRecipe(){}
+}
+
+class Pizza extends Recipes{
+    ingridients:string;
+    recipes:string
+
+    showIngredients(){}
+    showRecipe(){}
+}
+
+class Porridge extends Recipes{
+    ingridients:string;
+    recipes:string
+
+    showIngredients(){}
+    showRecipe(){}
+}
+
+let vivod1: Salad = new Salad()
+let vivod2: Pizza = new Pizza()
+let vivod3: Porridge = new Porridge()
+
+const recipes: Recipes[] = []
+
+recipes[0] = vivod1
+recipes[1] = vivod2
+recipes[2] = vivod3
+
+recipes[0].showIngredients()
+recipes[0].showRecipe()
+
+class Library{
+
+}
+
+abstract class Publisher {
+    constructor(
+    public title: string,
+    public author: string,
+    public pubYear: number,
+    public copies: number,
+    ){}
+}
+
+class GetPub extends Publisher{
+
+    getTitle(): string {
+		return this.title;
+	}
+
+    getAuthor(): string {
+		return this.author;
+	}
+
+    getPubYear(): number{
+		return this.pubYear;
+	}
+
+    getCopies(): number {
+		return this.copies;
+	}
+    
+}
+
+class ChangePub extends GetPub{
+
+	setTitle(title: string): void {
+		this.title = title;
+	}
+
+	setAuthor(author: string): void {
+		this.author = author;
+	}
+
+    setPubYear(pubYear: number): void {
+		this.pubYear = pubYear;
+	}
+
+    setCopies(copies: number): void {
+		this.copies = copies;
+	}
+}
+
+class Book extends Publisher {
+    
+    constructor(
+        title: string, 
+        author: string, 
+        pubYear: number, 
+        copies: number, 
+        public pages: number) 
+        {
+        super(title, author, pubYear, copies, pages);
+        }
+    
+}
+
+class Magazine extends Publisher{
+    constructor(
+        title: string, 
+        author: string, 
+        pubYear: number, 
+        copies: number, 
+        public issue: number) 
+        {
+        super(title, author, pubYear, copies, pages);
+        }
+}
+
+interface Reception {
+
+}
+
+class Reader {
+    firstName: string
+    lastName: string
+    items: string
+}
+
+class GetReader extends Reader{
+    getFirstName(): string {
+		return this.firstName;
+	}
+    getLastName(): string {
+		return this.lastName;
+	}
+    getItems(): string {
+		return this.items;
+	}
+}
+
+class ChangeReader extends GetReader{
+    setFirstName(firstName: string): void {
+		this.firstName = firstName;
+	}
+    
+    setLastName(lastName: string): void {
+		this.lastName = lastName;
+	}
+
+    setItems(items: string): void {
+		this.items = items;
+	}
+}
+
+const books = new Book("Bookname", "I.G", 2002, 5);
+const magazines = new Magazine("MagazineName" "P.I", 1989, 1);
+
+interface Logger {
+  log(message: string): void;
+}
+
+interface Position {
+  x: number;
+  y: number;
+}
+
+interface Angle {
+  angle: number;
+}
+
+class LogToConsole implements Logger {
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+class Plotter {
+  private logger: Logger;
+
+  constructor(logger: Logger) {
+    this.logger = logger;
+  }
+
+  drawLine(start: Position, end: Position, color: string): void {
+    this.logger.log(`Чертим линию из (${start.x}, ${start.y}) в (${end.x}, ${end.y}) используя ${color} цвет.`);
+  }
+
+  movePenUp(): void {
+    this.logger.log("Поднимаем каретку");
+  }
+
+  movePenDown(): void {
+    this.logger.log("Опускаем каретку");
+  }
+
+  rotate(angle: Angle): void {
+    const { angle: rotationAngle } = angle;
+    this.logger.log(`Поворачиваем на ${rotationAngle} градусов`);
+  }
+}
+
+class LineColor {
+  static BLACK = "черный";
+  static RED = "красный";
+  static GREEN = "зелёный";
+}
+
+const logger = new LogToConsole();
+const plotter = new Plotter(logger);
+
+const startPosition: Position = { x: 0, y: 0 };
+const endPosition: Position = { x: 100, y: 0 };
+const color: string = LineColor.GREEN;
+plotter.drawLine(startPosition, endPosition, color);
+
+plotter.movePenUp();
+plotter.rotate({ angle: 120 });
+plotter.movePenDown();
+
+endPosition.x = 50;
+endPosition.y = 87;
+plotter.drawLine(startPosition, endPosition, color);
+
+plotter.movePenUp();
+plotter.rotate({ angle: 120 });
+plotter.movePenDown();
+
+endPosition.x = 0;
+endPosition.y = 0;
+plotter.drawLine(startPosition, endPosition, color);
+
+plotter.movePenUp();
+plotter.rotate({ angle: 120 });
+plotter.movePenDown();
